@@ -7,6 +7,11 @@ div.topnav{
     background-image: url("assets/Images/Menubg.jpg");
 }
 
+div.HomepageData{
+
+    height: 300px;
+}
+
 a.MenuButton{
 
     -webkit-appearance: button;

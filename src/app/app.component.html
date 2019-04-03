@@ -1,5 +1,14 @@
 <app-navbar></app-navbar>
 
-<span class="MainMenu">
-    Hello
-</span>
+<form class="ui form">
+    <div class="field">
+      <input type="text" name="game-name" placeholder="Enter Game Name" #movieName>
+    </div>
+    <button class="ui button primary" (click)="getGameDetails(gameName.value)" type="submit">Submit</button>
+</form>
+
+<div *ngIf="gameData" class="HomepageData">
+    <h3 *ngIf="gameData">Game: {{gameData.rating}}</h3>
+</div>
+
+
