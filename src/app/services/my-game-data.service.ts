@@ -8,22 +8,21 @@ import {catchError, tap} from 'rxjs/operators';
 })
 export class MyGameDataService {
 
-  private _siteURL = 'https://api.thegamesdb.net/Games/ByGameName?apikey=';
+  private _siteURL = 'https://api.steampowered.com/ISteamApps/GetAppList/v2/?';
   private _key = '0189';
-  private _nameLink = '&name=';
 
   constructor(private _http:HttpClient) { }
 
   getGameData(gameName): Observable<Response> {
 
-    console.log("URL: "+this._siteURL+this._key+this._nameLink+gameName);
-    return this._http.get<Response>(this._siteURL+this._key+this._nameLink+gameName).pipe(
+    console.log("URL: "+this._siteURL);
+    return this._http.get<Response>(this._siteURL).pipe(
     tap(data => console.log('All: ' + JSON.stringify(data))),
     catchError(this.handleError));
   }
 
   private handleError(err: HttpErrorResponse) {
-    console.log('OmdbApiService: '+err.message);
+    console.log('GameService: '+err.message);
     return Observable.throw(err.message);
   }
 }
