@@ -1,5 +1,5 @@
 export interface Response {
 
-    rating: string;
+    game_title: string;
     
 }

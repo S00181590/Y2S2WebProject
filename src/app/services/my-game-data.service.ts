@@ -8,15 +8,16 @@ import {catchError, tap} from 'rxjs/operators';
 })
 export class MyGameDataService {
 
-  private _siteURL = 'https://api-v3.igdb.com/games/';
-  private _key = '8adb617b216639bf0abaf930a8ca14b8';
+  private _siteURL = 'https://api.thegamesdb.net/Games/ByGameName?apikey=';
+  private _key = '0189';
+  private _nameLink = '&name=';
 
   constructor(private _http:HttpClient) { }
 
   getGameData(gameName): Observable<Response> {
 
-    console.log("URL: "+this._siteURL+gameName+this._key);
-    return this._http.get<Response>(this._siteURL+gameName+this._key).pipe(
+    console.log("URL: "+this._siteURL+this._key+this._nameLink+gameName);
+    return this._http.get<Response>(this._siteURL+this._key+this._nameLink+gameName).pipe(
     tap(data => console.log('All: ' + JSON.stringify(data))),
     catchError(this.handleError));
   }
